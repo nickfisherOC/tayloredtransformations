@@ -70,10 +70,13 @@
       <div class="page-hero__bg" aria-hidden="true"></div>
       <div class="wrap">
         <p class="page-hero__index" data-reveal>About — 03 / The Man Behind The Method</p>
-        <div class="grid stack-mobile" style="grid-template-columns: 1.2fr 0.8fr; gap: clamp(2rem,5vw,4rem); align-items:end; margin-top:1.4rem;">
-          <h1 class="h-hero" data-reveal>I Don't Train Clients<br />The Way I Train <span class="text-red">Myself.</span><br /><span style="color:var(--muted);">I Train Them<br />The Way They Need.</span></h1>
-          <div class="media media--zoom" data-media data-reveal data-reveal-delay="2" style="aspect-ratio:3/4;">
-            <img src="assets/images/andrew-portrait.jpg" alt="Portrait of Andrew Taylor" data-fallback="andrew-portrait.jpg — Andrew portrait" loading="lazy" />
+        <div class="grid stack-mobile about-hero__grid" style="grid-template-columns: 1.2fr 0.8fr; gap: clamp(2rem,5vw,4rem); align-items:stretch; margin-top:1.4rem;">
+          <h1 class="h-hero about-hero__title" data-reveal>I Don't Train Clients<br />The Way I Train <span class="text-red">Myself.</span><br /><span style="color:var(--muted);">I Train Them<br />The Way They Need.</span></h1>
+          <div class="media media--zoom is-graded about-hero__portrait" data-media data-reveal data-reveal-delay="2">
+            <picture>
+              <source srcset="assets/images/andrew-portrait.webp" type="image/webp" />
+              <img src="assets/images/andrew-portrait.jpg" alt="Portrait of Andrew Taylor, personal trainer in Edmonton" loading="lazy" />
+            </picture>
           </div>
         </div>
       </div>
@@ -157,8 +160,11 @@
     <section class="section bg-black">
       <div class="wrap">
         <div class="grid cols-2" style="align-items:center; gap:clamp(2rem,5vw,4rem);">
-          <div class="media media--zoom" data-media data-reveal style="aspect-ratio:4/3;">
-            <img src="assets/images/andrew-coaching.jpg" alt="Andrew Taylor coaching in the gym" data-fallback="andrew-coaching.jpg" loading="lazy" />
+          <div class="media media--zoom is-graded" data-media data-reveal style="aspect-ratio:4/3;">
+            <picture>
+              <source srcset="assets/images/andrew-editorial.webp" type="image/webp" />
+              <img src="assets/images/andrew-editorial.jpg" alt="Andrew Taylor in the gym" loading="lazy" />
+            </picture>
           </div>
           <div class="stack" data-reveal data-reveal-delay="2">
             <span class="eyebrow">What He Stands For</span>

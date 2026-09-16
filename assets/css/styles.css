@@ -594,6 +594,19 @@ body.menu-open .mobile-menu__link:nth-child(5) { transition-delay: 0.38s; }
   transition: transform 1.1s var(--ease-out);
 }
 .media--zoom:hover img { transform: scale(1.05); }
+/* Light brand grade for photography (keeps warmth, ties to the mono/red system) */
+.media.is-graded img { filter: grayscale(0.42) contrast(1.08) brightness(0.98); }
+.media picture { display: block; width: 100%; height: 100%; }
+
+/* About hero: portrait matches the full height of the headline block */
+/* Heading sized so the height-matched portrait keeps a natural proportion
+   (close to the photo's ~0.6 aspect) — so his full frame/elbows stay in view. */
+.about-hero__title { font-size: clamp(2.4rem, 6.2vw, 6.5rem); }
+.about-hero__portrait { height: 100%; min-height: 320px; }
+.about-hero__portrait img { object-position: 50% 18%; } /* keep his face in frame */
+@media (max-width: 900px) {
+  .about-hero__portrait { height: auto; min-height: 0; aspect-ratio: 4 / 5; }
+}
 
 .img-fallback {
   position: relative;
@@ -1135,6 +1148,44 @@ body.menu-open .mobile-menu__link:nth-child(5) { transition-delay: 0.38s; }
     var(--black);
 }
 .cta-banner .giant-type { margin-bottom: 1.6rem; }
+
+/* ---------------------------------------------------------------
+   18b. EDITORIAL BAND (full-bleed cinematic photo moment)
+   --------------------------------------------------------------- */
+.editorial-band {
+  position: relative;
+  min-height: min(86vh, 720px);
+  display: grid;
+  align-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  padding-block: clamp(4rem, 10vw, 8rem);
+}
+.editorial-band__media { position: absolute; inset: -8% 0; z-index: -2; }
+.editorial-band__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
+  filter: grayscale(0.55) contrast(1.1) brightness(0.72);
+}
+.editorial-band__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.62) 42%, rgba(0,0,0,0.30) 100%),
+    linear-gradient(to top, rgba(0,0,0,0.85) 4%, rgba(0,0,0,0) 46%);
+}
+.editorial-band__inner { max-width: 42ch; }
+.editorial-band__inner .giant-type { font-size: clamp(2.6rem, 8vw, 6.5rem); margin: 1rem 0 1.6rem; }
+.editorial-band__inner .lead { margin-bottom: 2rem; }
+@media (max-width: 860px) {
+  .editorial-band__scrim {
+    background:
+      linear-gradient(to top, rgba(0,0,0,0.94) 8%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0.55) 100%);
+  }
+}
 
 /* ---------------------------------------------------------------
    19. FOOTER

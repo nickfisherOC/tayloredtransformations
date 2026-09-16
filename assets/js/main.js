@@ -182,6 +182,14 @@
           scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true },
         });
       }
+      // Full-bleed editorial band parallax
+      $$(".editorial-band__media img").forEach((el) => {
+        window.gsap.to(el, {
+          yPercent: 10,
+          ease: "none",
+          scrollTrigger: { trigger: el.closest(".editorial-band"), start: "top bottom", end: "bottom top", scrub: true },
+        });
+      });
       return;
     }
 

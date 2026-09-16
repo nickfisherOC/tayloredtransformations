@@ -33,6 +33,23 @@ The homepage hero uses **`andrew1`** — a full-body studio shot of Andrew.
 - To swap in a different hero shot later, replace `andrew1.webp` / `andrew1.jpg`
   (keep the 2:3-ish portrait framing) — no markup changes needed.
 
+## Andrew photography (in use)
+Two supplied screenshots power the interior Andrew imagery. Each is exported to
+`<name>.webp` + `<name>.jpg` (via `scratchpad/make_andrew_photos.py`) and displayed
+with a **light brand grade** (CSS class `.is-graded` — slight desaturation + contrast,
+keeps warmth).
+| Served file | Source | Used on |
+|-------------|--------|---------|
+| `andrew-portrait.webp/.jpg` | `andrew-portrait-src.png` (portrait, eye contact, white tank) | About hero + Homepage "Meet Andrew" |
+| `andrew-editorial.webp/.jpg` | `andrew-editorial-src.png` (editorial torso, warm, landscape) | About "Direct. Disciplined." block + Homepage editorial band |
+| `og-image.jpg` | cropped from the editorial shot, graded + darkened, 1200×630 | Social share (all pages) |
+
+- The **editorial band** is the full-bleed cinematic strip on the homepage between
+  "The Method" and the testimonials (`.editorial-band` in `styles.css`, markup in
+  `index.html`). Swap `andrew-editorial.*` to change its background.
+- These sources are ~360–624px — fine for these contained/banded spots; swap in
+  higher-res originals later for large screens if you have them.
+
 ## Photography (see PHOTOGRAPHY DIRECTION in the brief)
 | Filename                  | Used on   | Suggested shot |
 |---------------------------|-----------|----------------|

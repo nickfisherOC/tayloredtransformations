@@ -236,8 +236,11 @@
     <section class="section bg-black" id="about">
       <div class="wrap">
         <div class="grid cols-2" style="align-items:stretch; gap: clamp(2rem, 4vw, 4rem);">
-          <div class="media media--zoom" data-media data-reveal style="min-height: 460px; aspect-ratio: 4/5;">
-            <img src="assets/images/andrew-portrait.jpg" alt="Portrait of Andrew Taylor, personal trainer in Edmonton" data-fallback="andrew-portrait.jpg — Andrew portrait" loading="lazy" />
+          <div class="media media--zoom is-graded" data-media data-reveal style="min-height: 460px; aspect-ratio: 4/5;">
+            <picture>
+              <source srcset="assets/images/andrew-portrait.webp" type="image/webp" />
+              <img src="assets/images/andrew-portrait.jpg" alt="Portrait of Andrew Taylor, personal trainer in Edmonton" loading="lazy" />
+            </picture>
           </div>
           <div class="stack" data-reveal data-reveal-delay="2" style="align-self:center;">
             <span class="eyebrow">Meet Andrew</span>
@@ -357,6 +360,23 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ============ EDITORIAL BAND ============ -->
+    <section class="editorial-band" aria-label="This isn't a quick fix">
+      <div class="editorial-band__media" data-media>
+        <picture>
+          <source srcset="assets/images/andrew-editorial.webp" type="image/webp" />
+          <img src="assets/images/andrew-editorial.jpg" alt="Andrew Taylor training" loading="lazy" />
+        </picture>
+      </div>
+      <div class="editorial-band__scrim" aria-hidden="true"></div>
+      <div class="wrap editorial-band__inner">
+        <span class="eyebrow" data-reveal>The Difference</span>
+        <h2 class="giant-type" data-reveal data-reveal-delay="1">This Isn't<br />A Quick <span class="text-red">Fix.</span></h2>
+        <p class="lead" data-reveal data-reveal-delay="2">It's a system built around you — and someone who makes sure you actually follow it. That's what turns a plan into a transformation.</p>
+        <a class="btn btn--lg" href="apply.html" data-reveal data-reveal-delay="3"><span>Start Your Transformation</span><span class="btn__arrow" aria-hidden="true">→</span></a>
       </div>
     </section>
 

@@ -185,7 +185,7 @@
       // Full-bleed editorial band parallax
       $$(".editorial-band__media img").forEach((el) => {
         window.gsap.to(el, {
-          yPercent: 10,
+          yPercent: 7,
           ease: "none",
           scrollTrigger: { trigger: el.closest(".editorial-band"), start: "top bottom", end: "bottom top", scrub: true },
         });

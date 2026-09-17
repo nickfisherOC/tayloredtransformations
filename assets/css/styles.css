@@ -597,6 +597,8 @@ body.menu-open .mobile-menu__link:nth-child(5) { transition-delay: 0.38s; }
 /* Light brand grade for photography (keeps warmth, ties to the mono/red system) */
 .media.is-graded img { filter: grayscale(0.42) contrast(1.08) brightness(0.98); }
 .media picture { display: block; width: 100%; height: 100%; }
+/* Bias a portrait crop toward the top so the subject's head stays in frame */
+.media--top img { object-position: 50% 10%; }
 
 /* About hero: portrait matches the full height of the headline block */
 /* Heading sized so the height-matched portrait keeps a natural proportion
@@ -1150,41 +1152,56 @@ body.menu-open .mobile-menu__link:nth-child(5) { transition-delay: 0.38s; }
 .cta-banner .giant-type { margin-bottom: 1.6rem; }
 
 /* ---------------------------------------------------------------
-   18b. EDITORIAL BAND (full-bleed cinematic photo moment)
+   18b. EDITORIAL BAND (split: copy left · Andrew right)
    --------------------------------------------------------------- */
 .editorial-band {
   position: relative;
-  min-height: min(86vh, 720px);
+  min-height: min(84vh, 700px);
   display: grid;
   align-items: center;
   overflow: hidden;
   isolation: isolate;
   padding-block: clamp(4rem, 10vw, 8rem);
+  background: var(--black);
 }
-.editorial-band__media { position: absolute; inset: -8% 0; z-index: -2; }
+/* Photo occupies the right side; its left edge feathers into black */
+.editorial-band__media {
+  position: absolute;
+  top: -10%; bottom: -10%; right: 0;
+  width: min(58%, 900px);
+  z-index: -2;
+}
 .editorial-band__media img {
-  width: 100%;
-  height: 100%;
+  width: 100%; height: 100%;
   object-fit: cover;
-  object-position: center 28%;
-  filter: grayscale(0.55) contrast(1.1) brightness(0.72);
+  object-position: center 15%;          /* his head, looking down */
+  filter: grayscale(0.5) contrast(1.08) brightness(0.82);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 36%, #000 100%);
+          mask-image: linear-gradient(to right, transparent 0%, #000 36%, #000 100%);
 }
 .editorial-band__scrim {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
+  position: absolute; inset: 0; z-index: -1;
   background:
-    linear-gradient(90deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.62) 42%, rgba(0,0,0,0.30) 100%),
-    linear-gradient(to top, rgba(0,0,0,0.85) 4%, rgba(0,0,0,0) 46%);
+    linear-gradient(90deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.58) 46%, rgba(0,0,0,0) 68%),
+    linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0) 40%);
 }
-.editorial-band__inner { max-width: 42ch; }
-.editorial-band__inner .giant-type { font-size: clamp(2.6rem, 8vw, 6.5rem); margin: 1rem 0 1.6rem; }
-.editorial-band__inner .lead { margin-bottom: 2rem; }
-@media (max-width: 860px) {
-  .editorial-band__scrim {
-    background:
-      linear-gradient(to top, rgba(0,0,0,0.94) 8%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0.55) 100%);
+.editorial-band__content { max-width: 44ch; }
+.editorial-band__content .giant-type { font-size: clamp(2.6rem, 7vw, 6rem); margin: 1rem 0 1.6rem; }
+.editorial-band__content .lead { margin-bottom: 2rem; }
+@media (max-width: 1199px) {
+  /* Not enough room for a clean split — stack: photo as a top-anchored cover,
+     copy overlaid at the bottom (same treatment as mobile). */
+  .editorial-band { align-items: end; }
+  .editorial-band__media { top: -8%; bottom: -8%; right: 0; width: 100%; }
+  .editorial-band__media img {
+    object-position: 60% 12%;
+    -webkit-mask-image: none;
+            mask-image: none;
   }
+  .editorial-band__scrim {
+    background: linear-gradient(to top, rgba(0,0,0,0.94) 14%, rgba(0,0,0,0.4) 56%, rgba(0,0,0,0.5) 100%);
+  }
+  .editorial-band__content { max-width: none; }
 }
 
 /* ---------------------------------------------------------------

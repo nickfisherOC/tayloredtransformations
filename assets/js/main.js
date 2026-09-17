@@ -31,6 +31,9 @@
     initCheckout();
     initCursor();
     initMarqueeDuplicate();
+    // Signal the inline failsafe that the reveal system is live (keeps content
+    // armed for animation). If this never runs, the failsafe reveals everything.
+    window.__ttReady = true;
   }
 
   /* ---------- Checkout links ----------

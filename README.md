@@ -68,3 +68,32 @@ drop the real file in and it appears automatically. **Start by adding `logo.png`
 ## Deploy
 Drop the folder on any static host — Netlify, Vercel, Cloudflare Pages,
 GitHub Pages, S3, etc. No configuration required.
+
+## Offer structure (v2 — Beast Mode)
+The site is organized as a value ladder around the flagship program:
+
+- **Beast Mode** ([beast-mode.html](beast-mode.html)) — flagship 6-month coaching,
+  **$4,400** in full or **3 payments of $1,467**. Application-gated (no on-site
+  checkout): the CTA is *Apply for Beast Mode* → [apply.html](apply.html). Collect
+  payment after approval via a Stripe Payment Link (pay in full) and a 3-cycle Stripe
+  subscription/invoice for the plan.
+- **Services** ([coaching.html](coaching.html)) — one-off personalized: Training
+  Blueprint ($199), Nutrition Blueprint ($199), **Total Performance Blueprint ($349,
+  featured)**, and a 90-Minute Strategy Session ($175).
+- **Shop** ([shop.html](shop.html)) — four e-books: Training Manual ($39),
+  Eat Like You Mean It ($29), Supplement Guide ($19), 12-Week Blueprint ($49).
+
+### Wiring up checkout
+Buy buttons for Services and Shop carry `data-checkout="<key>"`. Paste your
+**Stripe Payment Link / Gumroad / Lemon Squeezy** URLs into the `CHECKOUT_LINKS`
+map at the top of the checkout section in [assets/js/main.js](assets/js/main.js).
+Until a key has a URL, its button reveals a "contact to purchase" note — no fake
+checkout. The Strategy Session key can point at a Calendly (or Stripe) booking link.
+Personalized Blueprints should collect a short intake after purchase (buy → intake →
+Andrew builds & delivers).
+
+### To do before launch
+- Set `CHECKOUT_LINKS` (above) and the form endpoint (see *Connect the application form*).
+- Add e-book cover art: `product-manual.jpg`, `product-eat.jpg`,
+  `product-supplement.jpg`, `product-12week.jpg` (see assets/images/README.md).
+- Replace sample testimonials / before-after photos with approved Beast Mode client proof.

@@ -28,8 +28,40 @@
     initShopFilter();
     initCommitmentScale();
     initForm();
+    initCheckout();
     initCursor();
     initMarqueeDuplicate();
+  }
+
+  /* ---------- Checkout links ----------
+     Paste your Stripe Payment Link / Gumroad / Lemon Squeezy URL for each
+     product key below. Until a key has a URL, its button reveals a short
+     "contact to purchase" note instead of a broken/fake checkout.          */
+  const CHECKOUT_LINKS = {
+    // One-off services
+    "training-blueprint": "",   // Taylored Training Blueprint — $199
+    "nutrition-blueprint": "",  // Taylored Nutrition Blueprint — $199
+    "total-blueprint": "",      // Total Performance Blueprint — $349
+    "strategy-session": "",     // 90-Minute Performance Strategy Session — $175 (Calendly/Stripe)
+    // Digital products
+    "beast-mode-manual": "",    // The Beast Mode Training Manual — $39
+    "eat-like-you-mean-it": "", // Eat Like You Mean It — $29
+    "supplement-guide": "",     // The Supplement Guide — $19
+    "12-week-blueprint": "",    // The 12-Week Beast Mode Blueprint — $49
+  };
+
+  function initCheckout() {
+    $$("[data-checkout]").forEach((btn) => {
+      on(btn, "click", (e) => {
+        const key = btn.getAttribute("data-checkout");
+        const url = CHECKOUT_LINKS[key];
+        if (url) { window.location.href = url; return; }
+        // No link configured yet — reveal the contact note, don't fake a purchase
+        e.preventDefault();
+        const card = btn.closest(".offer, .product, [data-buy-scope]") || btn.parentElement;
+        if (card) card.classList.add("is-note-shown");
+      });
+    });
   }
 
   /* ---------- Footer year ---------- */

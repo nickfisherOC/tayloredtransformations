@@ -1205,6 +1205,121 @@ body.menu-open .mobile-menu__link:nth-child(5) { transition-delay: 0.38s; }
 }
 
 /* ---------------------------------------------------------------
+   18c. OFFERS — pricing, value ladder, inclusions, offer/ebook cards
+   --------------------------------------------------------------- */
+/* Price display */
+.price { display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; }
+.price__amount {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(2.6rem, 5.5vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.price__amount .cur { font-size: 0.46em; vertical-align: super; color: var(--muted); margin-right: 0.06em; }
+.price__meta { font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+.price__plan {
+  margin-top: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.86);
+}
+.price__plan .pill {
+  font-size: 0.68rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+  color: #fff; background: rgba(229,9,20,0.14); border: 1px solid var(--red);
+  padding: 0.3rem 0.6rem; border-radius: 40px;
+}
+.price__plan b { color: #fff; }
+
+/* Value ladder (3 steps, flagship emphasised) */
+.ladder { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.ladder__step {
+  background: var(--ink);
+  padding: clamp(1.6rem, 3vw, 2.6rem);
+  display: flex; flex-direction: column; gap: 0.9rem;
+  position: relative; transition: background 0.4s;
+}
+.ladder__step:hover { background: var(--surface-2); }
+.ladder__step--flagship {
+  background: linear-gradient(180deg, rgba(229,9,20,0.12), var(--ink) 58%);
+}
+.ladder__step--flagship:hover { background: linear-gradient(180deg, rgba(229,9,20,0.18), var(--surface-2) 58%); }
+.ladder__tier { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); font-weight: 700; }
+.ladder__title { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; font-size: clamp(1.4rem, 2.4vw, 1.9rem); line-height: 1.02; }
+.ladder__price { font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; }
+.ladder__desc { color: var(--muted); font-size: 0.92rem; flex: 1; }
+.ladder__cta { margin-top: 0.4rem; }
+.ladder__step--flagship .badge-best { position: absolute; top: 0; right: 0; }
+
+/* Best-value / flagship ribbon */
+.badge-best {
+  background: var(--red); color: #fff;
+  font-size: 0.6rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 0.4rem 0.7rem;
+}
+.badge-best--muted { background: var(--surface-3); color: var(--muted); }
+
+/* Beast Mode inclusions checklist */
+.inclusions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 2.4rem; }
+.inclusions li {
+  display: flex; gap: 0.8rem; align-items: flex-start;
+  padding: 0.85rem 0; border-top: 1px solid var(--line);
+  font-size: 0.95rem; color: rgba(255,255,255,0.86);
+}
+.inclusions li::before {
+  content: ""; flex: none; margin-top: 3px;
+  width: 16px; height: 16px;
+  background: var(--red);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 12l5 5L20 6' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 12l5 5L20 6' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+
+/* One-off offer cards */
+.offer {
+  background: var(--surface-1);
+  border: 1px solid var(--line);
+  padding: clamp(1.6rem, 2.6vw, 2.2rem);
+  display: flex; flex-direction: column; gap: 0.9rem;
+  position: relative; transition: border-color 0.35s, transform 0.35s var(--ease-out);
+  min-height: 100%;
+}
+.offer:hover { border-color: var(--line-strong); transform: translateY(-4px); }
+.offer--featured { border-color: var(--red); }
+.offer--featured::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  box-shadow: 0 0 0 1px var(--red) inset, 0 30px 60px -30px var(--red-glow);
+}
+.offer__cat { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); font-weight: 700; }
+.offer__name { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; font-size: clamp(1.35rem, 2.2vw, 1.8rem); line-height: 1.03; }
+.offer__desc { color: var(--muted); font-size: 0.92rem; }
+.offer__list { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.4rem; }
+.offer__list li { display: flex; gap: 0.6rem; font-size: 0.86rem; color: rgba(255,255,255,0.78); }
+.offer__list li::before { content: "—"; color: var(--red); }
+.offer__foot { margin-top: auto; padding-top: 1.2rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+
+/* E-book / digital product cards (reuse .product but add price prominence) */
+.ebook__price { font-family: var(--font-display); font-weight: 800; font-size: 1.3rem; }
+
+/* Buy button + inline "coming soon" note */
+.buy-note { display: none; font-size: 0.78rem; color: var(--muted); margin-top: 0.6rem; }
+.buy-note a { color: var(--red); }
+.is-note-shown .buy-note { display: block; }
+
+/* Big split feature (Beast Mode centrepiece on home) */
+.feature-split { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+
+@media (max-width: 960px) {
+  .ladder { grid-template-columns: 1fr; }
+  .feature-split { grid-template-columns: 1fr; }
+}
+@media (max-width: 620px) {
+  .inclusions { grid-template-columns: 1fr; }
+  .inclusions li:nth-child(2) { border-top: 1px solid var(--line); }
+}
+
+/* ---------------------------------------------------------------
    19. FOOTER
    --------------------------------------------------------------- */
 .site-footer { background: var(--black); border-top: 1px solid var(--line); padding-top: clamp(3.5rem, 7vw, 6rem); }

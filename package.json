@@ -1,0 +1,9 @@
+{
+  "name": "tayloredtransformations",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Taylored Transformations — static marketing site (HTML/CSS/JS, no build step).",
+  "scripts": {
+    "build": "echo \"Static site — no build step required.\""
+  }
+}
